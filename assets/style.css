@@ -1,0 +1,31 @@
+.quiz-card{
+    margin:10% 20% 0% 20%;
+    
+    
+}
+
+.qAnswers{
+     
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+    
+}
+
+.aBtn{
+
+    margin-top: 1vh;
+    position: relative;
+    height: 10%;
+    width: 25%;
+    font-size: 70%;
+    text-align: left;
+}
+
+.resultFoot{
+    
+    margin-top: 2vh;
+    padding-left: 0;
+    
+}
