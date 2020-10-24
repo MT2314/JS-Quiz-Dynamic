@@ -1,8 +1,12 @@
-.quiz-card{
+/* All cards */
+.myCards{
     margin:10% 20% 0% 20%;
     
     
+    
 }
+
+/* Quiz Card */
 
 .qAnswers{
      
@@ -29,3 +33,4 @@
     padding-left: 0;
     
 }
+
