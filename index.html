@@ -7,14 +7,93 @@
     <title>JS Quiz</title>
 
     <!-- Stylesheet Links-->
+    <!-- CSS Reset -->
+    <link href="assets/reset.css" type="text/css" rel="stylesheet">
+
     <!-- BOOTSTRAP CSS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
+
     <!-- My CSS -->
     <link href="assets/style.css" type="text/css" rel="stylesheet">
 
-    <!-- JS Link -->
+
+
+
+</head>
+
+<body>
+    <!-- Quiz Intro Card -->
+    <section class="myCards" id="quizIntroCard">
+        <div class="card border-0 text-center">
+            <div class="card-body">
+                <h1 class="card-title mb-5">Javascript Quiz</h1>
+                <p class="card-text mb-5">With supporting text below as a natural lead-in to additional content.</p>
+                <button class=" btn btn-primary" id = "quizStart">Start Quiz</button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Quiz Card -->
+    <section class="myCards" id="quizCard">
+        <div class="card border-0">
+            <div class="card-body">
+                <h5 class="card-title mb-4" id="question">What is Javascript really? </h1>
+                    <div class="qAnswers" id="qAnswers">
+                        <button class=" btn btn-sm btn-primary aBtn" id = "btnA1" data-value = "1"></button>
+                        <button class=" btn btn-sm btn-primary aBtn" id = "btnA2" data-value = "2"></button>
+                        <button class=" btn btn-sm btn-primary aBtn" id = "btnA3" data-value = "3"></button>
+                        <button class=" btn btn-sm btn-primary aBtn" id = "btnA4" data-value = "4"></button>
+                    </div>
+
+                    <p class="card-footer resultFoot" id = "correctWrong"></p>
+
+            </div>
+    </section>
+
+    <!-- Results Card -->
+    <section class="myCards" id="resultCard">
+        <div class="card border-0">
+            <div class="card-body">
+                <h4 class="card-title"><strong>All done!</strong> </h4>
+                <p class="mt-4">Your final score is 22.</p>
+                <!-- Score Submit  -->
+                <form>
+                    <div class="form-group mt-5">
+                        <label class="mr-3">Enter Initials:</label>
+                        <input type="text-area " id="score">
+                        <button type="submit" class="btn btn-sm btn-primary ml-3 mb-1">Submit! </button>
+
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer resultFoot"></div>
+        </div>
+    </section>
+
+    <!-- Highscores Card -->
+    <section class="myCards" id="highscoreCard">
+        <div class="card border-0">
+            <div class="card-body">
+                <h3 class="card-title"><strong>Highscores</strong> </h3>
+                <!-- Highscore list -->
+                <ul class = "highscoreList" id="highscoreList">
+                    <li>1. Mikey 22</li>
+                </ul>
+                <!-- Score Submit  -->
+
+                <button type="submit" class="btn btn-sm btn-primary">Go Back! </button>
+                <button type="submit" class="btn btn-sm btn-primary">Clear Highscores! </button>
+
+            </div>
+           =
+        </div>
+    </section>
+
+        <!-- JS Links -->
+
     <!-- BOOTSTRAP JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -24,42 +103,6 @@
         crossorigin="anonymous"></script>
     <!-- My JS -->
     <script src="assets/script.js"></script>
-
-</head>
-
-<body>
-    <!-- Quiz Intro Card -->
-    <section class="quiz-card" id = "quizIntroCard">
-        <div class="card text-center">
-            <div class="card-body">
-                <h1 class="card-title mb-5">Javascript Quiz</h1>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class=" btn btn-md btn-primary">Start Quiz</a>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Quiz Card -->
-    <section class="quiz-card" id = "quizCard">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title mb-4">What is Javascript really? </h1>
-                    <div class = "qAnswers" id = "qAnswers">
-                        <button class=" btn btn-sm btn-primary aBtn">Start Quiz</button>
-                        <button class=" btn btn-sm btn-primary aBtn">Start Quiz</button>
-                        <button class=" btn btn-sm btn-primary aBtn">Start Quiz</button>
-                        <button class=" btn btn-sm btn-primary aBtn">Start Quiz</button>
-                    </div>
-
-                    <div class = "card-footer resultFoot">Correct!</div>
-            
-        </div>
-    </section>
-
-
- 
-
 </body>
 
 </html>
