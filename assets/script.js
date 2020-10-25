@@ -113,3 +113,64 @@ var quizArr = [
             4,
     },
 ];
+
+
+function quizStart() {
+    var x;
+    var index = 0;
+    qAndA(index);
+
+    // Answer btn event listeners
+    btnA1.addEventListener("click", check);
+    btnA2.addEventListener("click", check);
+    btnA3.addEventListener("click", check);
+    btnA4.addEventListener("click", check);
+
+    // Button display
+    function qAndA(index) {
+        if(index < quizArr.length){
+        question.innerHTML = quizArr[index].q1;
+        btnA1.innerHTML = quizArr[index].a1;
+        btnA2.innerHTML = quizArr[index].a2;
+        btnA3.innerHTML = quizArr[index].a3;
+        btnA4.innerHTML = quizArr[index].a4;
+        }
+        else{
+            results();
+            
+        }
+    };
+
+    // Correct anmswer check
+    function check(event, x) {
+        x = event.currentTarget.getAttribute("data-value");
+
+        if (x == quizArr[index].correct) {
+            index++;
+            qAndA(index);
+            correctWrong.innerHTML = "Correct!";
+            setTimeout(function () {
+                correctWrong.innerHTML = "";
+            }
+                , 1000);
+        }
+        else {
+            index++;
+            qAndA(index);
+            correctWrong.innerHTML = "Wrong!";
+            setTimeout(function () {
+                correctWrong.innerHTML = "";
+            }
+                , 1000);
+
+        }
+    };
+};
+    
+// Results Card
+
+function results(){
+    quizCard.style.display = "none";
+    resultCard.style.display = "block";
+    
+};
