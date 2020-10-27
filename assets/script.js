@@ -196,7 +196,7 @@ function check(event, x) {
             , 1000);
     }
     else {
-        secondsLeft -= 15;
+        secondsLeft -= 10;
         correctWrong.innerHTML = "Wrong!";
         setTimeout(function () {
             correctWrong.innerHTML = "";
