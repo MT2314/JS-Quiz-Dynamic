@@ -4,33 +4,27 @@
 }
 
 /* Quiz Intro Card */
-
 #quizIntroCard{
     visibility: visible;
 }
 
 /* Quiz Card */
-
-.qAnswers{
-     
+.qAnswers{     
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    
-    
+    align-items: flex-start;    
 }
 
+/* Answer Buttons */
 .aBtn{
-
     margin-top: 1vh;
     position: relative;
     font-size: 70%;
     text-align: left;
 }
 
-.resultFoot{
-    
+/* Correct/Wrong Result Footer in Quiz Card */
+.resultFoot{   
     margin-top: 2vh;
-    padding-left: 0;
-    
+    padding-left: 0;   
 }
