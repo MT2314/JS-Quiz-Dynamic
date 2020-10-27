@@ -18,30 +18,32 @@
     <!-- My CSS -->
     <link href="assets/style.css" type="text/css" rel="stylesheet">
 
-
-
-
 </head>
 
 <body>
 
-    <div class = "container navbar">
-    <!-- Highscore link -->
-    <a href="javascript:;" id = "goHigh">
-    High Scores
-    </a>
+    <!-- Top Bar  //Highscore page link and timer -->
+    <div class="container navbar">
+        <!-- Highscore link -->
+        <a href="javascript:;" id="goHigh">
+            High Scores
+        </a>
 
-    <!-- Time and Score -->
-    <p id="timer" class="timer">
-        Time: 0
-    </p>
-</div>
+        <!-- Time and Score -->
+        <p id="timer" class="timer">
+            Time: 0
+        </p>
+    </div>
+
     <!-- Quiz Intro Card -->
     <section class="myCards" id="quizIntroCard">
         <div class="card border-0 text-center">
             <div class="card-body">
                 <h1 class="card-title mb-5">Javascript Quiz</h1>
-                <p class="card-text mb-5">With supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text mb-4">This is a Beginner Level Javascript Quiz.
+                    You will have 75 seconds to answer 5 questions. If you answer
+                    incorrectly you will be penalized 10 seconds. Your final score is equal to
+                    your time remaining. Good Luck!</p>
                 <button class=" btn btn-primary" id="quizStart">Start Quiz</button>
             </div>
         </div>
@@ -52,16 +54,14 @@
     <section class="myCards" id="quizCard">
         <div class="card border-0">
             <div class="card-body">
-                <h5 class="card-title mb-4" id="question">What is Javascript really? </h1>
-                    <div class="qAnswers" id="qAnswers">
-                        <button class=" btn btn-sm btn-primary aBtn" id="btnA1" data-value="1"></button>
-                        <button class=" btn btn-sm btn-primary aBtn" id="btnA2" data-value="2"></button>
-                        <button class=" btn btn-sm btn-primary aBtn" id="btnA3" data-value="3"></button>
-                        <button class=" btn btn-sm btn-primary aBtn" id="btnA4" data-value="4"></button>
-                    </div>
-
-                    <p class="card-footer resultFoot" id="correctWrong"></p>
-
+                <h5 class="card-title mb-4" id="question"></h5>
+                <div class="qAnswers" id="qAnswers">
+                    <button class=" btn btn-sm btn-primary aBtn" id="btnA1" data-value="1"></button>
+                    <button class=" btn btn-sm btn-primary aBtn" id="btnA2" data-value="2"></button>
+                    <button class=" btn btn-sm btn-primary aBtn" id="btnA3" data-value="3"></button>
+                    <button class=" btn btn-sm btn-primary aBtn" id="btnA4" data-value="4"></button>
+                </div>
+                <p class="card-footer resultFoot" id="correctWrong"></p>
             </div>
     </section>
 
@@ -77,7 +77,6 @@
                         <label class="mr-3">Enter Initials:</label>
                         <input type="text-area " id="userName">
                         <button type="submit" class="btn btn-sm btn-primary ml-3 mb-1" id="submitBtn">Submit! </button>
-
                     </div>
                 </form>
             </div>
@@ -92,15 +91,12 @@
                 <h3 class="card-title"><strong>Highscores</strong> </h3>
                 <!-- Highscore list -->
                 <ul class="highscoreList" id="highscoreList">
-
+                <!-- JS will fill Unordered list with highscores contained in an <li> -->
                 </ul>
                 <!-- Score Submit  -->
-
                 <button type="button" class="btn btn-sm btn-primary" id="goBack">Go Back! </button>
                 <button type="button" class="btn btn-sm btn-primary" id="clearHS">Clear Highscores! </button>
-
             </div>
-
         </div>
     </section>
 
