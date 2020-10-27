@@ -24,13 +24,25 @@
 </head>
 
 <body>
+
+    <div class = "container navbar">
+    <!-- Highscore link -->
+    <a href="javascript:;" id = "goHigh">
+    High Scores
+    </a>
+
+    <!-- Time and Score -->
+    <p id="timer" class="timer">
+        Time: 0
+    </p>
+</div>
     <!-- Quiz Intro Card -->
     <section class="myCards" id="quizIntroCard">
         <div class="card border-0 text-center">
             <div class="card-body">
                 <h1 class="card-title mb-5">Javascript Quiz</h1>
                 <p class="card-text mb-5">With supporting text below as a natural lead-in to additional content.</p>
-                <button class=" btn btn-primary" id = "quizStart">Start Quiz</button>
+                <button class=" btn btn-primary" id="quizStart">Start Quiz</button>
             </div>
         </div>
     </section>
@@ -42,13 +54,13 @@
             <div class="card-body">
                 <h5 class="card-title mb-4" id="question">What is Javascript really? </h1>
                     <div class="qAnswers" id="qAnswers">
-                        <button class=" btn btn-sm btn-primary aBtn" id = "btnA1" data-value = "1"></button>
-                        <button class=" btn btn-sm btn-primary aBtn" id = "btnA2" data-value = "2"></button>
-                        <button class=" btn btn-sm btn-primary aBtn" id = "btnA3" data-value = "3"></button>
-                        <button class=" btn btn-sm btn-primary aBtn" id = "btnA4" data-value = "4"></button>
+                        <button class=" btn btn-sm btn-primary aBtn" id="btnA1" data-value="1"></button>
+                        <button class=" btn btn-sm btn-primary aBtn" id="btnA2" data-value="2"></button>
+                        <button class=" btn btn-sm btn-primary aBtn" id="btnA3" data-value="3"></button>
+                        <button class=" btn btn-sm btn-primary aBtn" id="btnA4" data-value="4"></button>
                     </div>
 
-                    <p class="card-footer resultFoot" id = "correctWrong"></p>
+                    <p class="card-footer resultFoot" id="correctWrong"></p>
 
             </div>
     </section>
@@ -58,13 +70,13 @@
         <div class="card border-0">
             <div class="card-body">
                 <h4 class="card-title"><strong>All done!</strong> </h4>
-                <p class="mt-4">Your final score is 22.</p>
+                <p class="mt-4" id="finalScore">.</p>
                 <!-- Score Submit  -->
                 <form>
                     <div class="form-group mt-5">
                         <label class="mr-3">Enter Initials:</label>
-                        <input type="text-area " id="score">
-                        <button type="submit" class="btn btn-sm btn-primary ml-3 mb-1">Submit! </button>
+                        <input type="text-area " id="userName">
+                        <button type="submit" class="btn btn-sm btn-primary ml-3 mb-1" id="submitBtn">Submit! </button>
 
                     </div>
                 </form>
@@ -79,20 +91,20 @@
             <div class="card-body">
                 <h3 class="card-title"><strong>Highscores</strong> </h3>
                 <!-- Highscore list -->
-                <ul class = "highscoreList" id="highscoreList">
-                    <li>1. Mikey 22</li>
+                <ul class="highscoreList" id="highscoreList">
+
                 </ul>
                 <!-- Score Submit  -->
 
-                <button type="submit" class="btn btn-sm btn-primary">Go Back! </button>
-                <button type="submit" class="btn btn-sm btn-primary">Clear Highscores! </button>
+                <button type="button" class="btn btn-sm btn-primary" id="goBack">Go Back! </button>
+                <button type="button" class="btn btn-sm btn-primary" id="clearHS">Clear Highscores! </button>
 
             </div>
-           =
+
         </div>
     </section>
 
-        <!-- JS Links -->
+    <!-- JS Links -->
 
     <!-- BOOTSTRAP JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

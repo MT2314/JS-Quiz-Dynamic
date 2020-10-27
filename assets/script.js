@@ -3,9 +3,14 @@ var introCard = document.getElementById("quizIntroCard");
 var quizCard = document.getElementById("quizCard");
 var resultCard = document.getElementById("resultCard");
 var highScoresCard = document.getElementById("highscoreCard");
-
-
-// DOM SELECTION BUTTONS
+var highScoreList = document.getElementById("highscoreList");
+var clearHS = document.getElementById("clearHS");
+var goHigh = document.getElementById("goHigh");
+var goBack = document.getElementById("goBack");
+var finalScore = document.getElementById('finalScore');
+var submitBtn = document.getElementById('submitBtn');
+var userNameInput = document.getElementById("userName");
+var timerEl = document.getElementById("timer");
 var quizStartbtn = document.getElementById("quizStart");
 
 // Intro Card 
@@ -14,10 +19,16 @@ quizCard.style.display = "none";
 resultCard.style.display = "none";
 highScoresCard.style.display = "none";
 // Start Button
+var index;
+var quizProgress;
 quizStartbtn.addEventListener("click", function () {
     introCard.style.display = "none";
     quizCard.style.display = "block";
+    index = 0;
+    quizProgress = true;
+    setTime();
     quizStart();
+
 });
 
 // Quiz
@@ -114,63 +125,169 @@ var quizArr = [
     },
 ];
 
+// Time Display
+var secondsLeft;
+var arrayDone = false;
+
+function setTime() {
+    secondsLeft = quizArr.length * 15;
+
+    if(quizProgress == true){
+    var timerInterval = setInterval(function () {
+        secondsLeft--;
+        timerEl.textContent = "Time: " + secondsLeft;
+
+        if (secondsLeft == 0 || arrayDone == true) {
+            clearInterval(timerInterval);
+            results();
+            timerEl.textContent = "Time: " + secondsLeft;
+        }
+        else if (quizProgress == false){
+            clearInterval(timerInterval);
+        }
+
+    }, 1000);
+};
+};
+
+
+
+//Quiz Start 
 
 function quizStart() {
-    var x;
-    var index = 0;
     qAndA(index);
-
     // Answer btn event listeners
     btnA1.addEventListener("click", check);
     btnA2.addEventListener("click", check);
     btnA3.addEventListener("click", check);
     btnA4.addEventListener("click", check);
+};
 
-    // Button display
-    function qAndA(index) {
-        if(index < quizArr.length){
+
+// Button display
+function qAndA(index) {
+    if (index < quizArr.length) {
         question.innerHTML = quizArr[index].q1;
         btnA1.innerHTML = quizArr[index].a1;
         btnA2.innerHTML = quizArr[index].a2;
         btnA3.innerHTML = quizArr[index].a3;
         btnA4.innerHTML = quizArr[index].a4;
-        }
-        else{
-            results();
-            
-        }
-    };
+    }
+    else {
+        arrayDone = true;
+        results();
+    }
 
-    // Correct anmswer check
-    function check(event, x) {
-        x = event.currentTarget.getAttribute("data-value");
-
-        if (x == quizArr[index].correct) {
-            index++;
-            qAndA(index);
-            correctWrong.innerHTML = "Correct!";
-            setTimeout(function () {
-                correctWrong.innerHTML = "";
-            }
-                , 1000);
-        }
-        else {
-            index++;
-            qAndA(index);
-            correctWrong.innerHTML = "Wrong!";
-            setTimeout(function () {
-                correctWrong.innerHTML = "";
-            }
-                , 1000);
-
-        }
-    };
 };
-    
+
+
+// Correct anmswer check
+var x;
+function check(event, x) {
+
+    x = event.currentTarget.getAttribute("data-value");
+    console.log(index);
+
+    if (x == quizArr[index].correct) {
+        correctWrong.innerHTML = "Correct!";
+        setTimeout(function () {
+            correctWrong.innerHTML = "";
+        }
+            , 1000);
+    }
+    else {
+        secondsLeft -= 15;
+        correctWrong.innerHTML = "Wrong!";
+        setTimeout(function () {
+            correctWrong.innerHTML = "";
+        }
+            , 1000);
+
+    };
+    index++;
+    qAndA(index);
+};
+
+
 // Results Card
-
-function results(){
+var userName;
+function results() {
     quizCard.style.display = "none";
+    timerEl.style.display = "none";
+    finalScore.innerHTML = "Your final score is " + secondsLeft;
     resultCard.style.display = "block";
-    
+
 };
+
+// Submit Button
+submitBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    userName = userNameInput.value;
+    if (userName == "") {
+        alert("Must Enter Initial")
+
+    }
+    else {
+        resultCard.style.display = "none";
+        highScoresCard.style.display = "block";
+        localStorage.setItem(userName, secondsLeft);
+        console.log(localStorage.key(1));
+        loadHR();
+    };
+});
+
+
+// HighScore Card
+//
+
+// Load High Scores from Storage
+function loadHR() {
+    var key;
+    var value;
+    var node;
+    var textnode;
+    removeAllChildNodes(highScoreList);
+    for (var i = 0, len = localStorage.length; i < len; i++) {
+        key = localStorage.key(i);
+        value = localStorage[key];
+        node = document.createElement("li");
+        textnode = document.createTextNode(key + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0" + value);
+        node.appendChild(textnode);
+        highScoreList.appendChild(node);
+
+    };
+};
+
+// Highscore Link in Navbar
+goHigh.addEventListener("click", function () {
+    resultCard.style.display = "none";
+    quizCard.style.display = "none";
+    introCard.style.display = "none";
+    highScoresCard.style.display = "block";
+    timerEl.style.display = "none";
+    quizProgress = false;
+});
+
+
+// Go Back Button
+goBack.addEventListener("click", function () {
+    highScoresCard.style.display = "none";
+    introCard.style.display = "block";
+    timerEl.textContent = "Time: 0";
+    timerEl.style.display = "block";
+    arrayDone = false;
+});
+
+// Remove ChildNodes Function
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+};
+
+// Clear HighScore
+clearHS.addEventListener("click", function () {
+    localStorage.clear();
+    removeAllChildNodes(highScoreList);
+
+});
