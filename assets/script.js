@@ -165,6 +165,7 @@ function quizStart() {
 
 
 // Button display
+var final;
 function qAndA(index) {
     if (index < quizArr.length) {
         question.innerHTML = quizArr[index].q1;
@@ -175,6 +176,7 @@ function qAndA(index) {
     }
     else {
         arrayDone = true;
+        final = secondsLeft;
         results();
     }
 
@@ -214,7 +216,7 @@ var userName;
 function results() {
     quizCard.style.display = "none";
     timerEl.style.display = "none";
-    finalScore.innerHTML = "Your final score is " + secondsLeft;
+    finalScore.innerHTML = "Your final score is " + final;
     resultCard.style.display = "block";
 
 };
@@ -230,7 +232,7 @@ submitBtn.addEventListener("click", function (event) {
     else {
         resultCard.style.display = "none";
         highScoresCard.style.display = "block";
-        localStorage.setItem(userName, secondsLeft);
+        localStorage.setItem(userName, final);
         console.log(localStorage.key(1));
         loadHR();
     };
